@@ -15,6 +15,7 @@ int main(void)
 	cur[0] = a1;
 	cur[1] =static_cast<B*>(b1);
 	cur[2] =static_cast<C*>(c1);
+    //下面这一句必须  使用 staticn_cast<>() 强转  
 	cur[3] =static_cast<B*>(d1);
 	cout<<"___对a1赋值geta(int a) 并打印"<<endl;
 	a1->geta(2);
