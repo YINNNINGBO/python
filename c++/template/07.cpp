@@ -2,7 +2,9 @@
 #include <cstring>
 using namespace std;
 //类模板中成员函数的创建时间
-//
+//被调用 才真正创建成员函数最主要的原因就是：
+//只有被调用  编译器才能确定 模板的参数类型，才能做到创建成员函数，
+//否则 无法创建
 template <class NameType ,class AgeType = int>// 表明类模板中有两种类型的  参数
 class Person
 {
