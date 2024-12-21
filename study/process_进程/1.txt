@@ -1,0 +1,2 @@
+i am father process :11761,my childe process is 11762
+i am child process 11762,my father process is 11761
