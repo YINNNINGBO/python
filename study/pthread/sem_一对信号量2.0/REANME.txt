@@ -1,0 +1,5 @@
+信号量解决线程间同步问题
+sem_init (sem_t *__sem, int __pshared, unsigned int __value)
+    第三个参数对线程调度的影响优先级最高
+线程处理函数中  延时函数sleep...  也会有一定影响  优先级<sem_init
+    难点：理解繁琐
