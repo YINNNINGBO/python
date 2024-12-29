@@ -1,0 +1,20 @@
+# 定义编译器
+CC := gcc
+#不能生成 .o  文件
+# 定义目标文件
+EXEC := socket_server socket_client
+#默认目标
+all:  $(EXEC) 
+# 模式规则：编译 .c 文件生成对应的可执行文件
+%: %.c
+	$(CC) $< -o $@
+%.o: %.c
+	$(CC) -c $< -o $@
+# 伪目标
+.PHONY: all  clean
+# 清理规则
+clean:
+	-rm -f $(EXEC) $(EXEC).o
+
+
+
