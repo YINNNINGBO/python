@@ -42,5 +42,5 @@ int main()
 g++ main.cpp -c  -o main.o
 g++ main.o -o main
 ./main
-2 + 3i
+2 + 3ilinux
  */
