@@ -25,7 +25,7 @@ int main()
     // pi =  static_cast<int * >(pc);     //c++ 严谨不行，
     // 但是在c中  不报错
     // eg: int num =  (int)p1;
-    int n = 0x00414243; // 主机字节序 （小端字节序）  高地址存地位数据
+    int n = 0x00414243; // 主机字节序 （小端字节序）  高地址存数据高字节数据  eg:高地址存00
     int num = 123;      // 0x00 00 00 7b
     int num2 = 0x7b;
     char *ps = reinterpret_cast<char *>(&n); // c++  可以
