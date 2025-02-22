@@ -7,7 +7,7 @@ exec:= $(src:.c=)
 ALL:  $(exec)
 $(exec):%:%.o
 	$(CC)   $^ -o $@
-%.o:%.cpp
+%.o:%.c
 	$(CC)  -c $^ -o $@
 
 .PHONY: ALL clean
