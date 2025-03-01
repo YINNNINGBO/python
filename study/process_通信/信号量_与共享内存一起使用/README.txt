@@ -1,7 +1,46 @@
 /** 
                           信号量
- * sem_init 用于线程中   匿名信号量         sem_destroy销毁   退出时自动清理
- * sem_open 用于进程中   有名（命名）信号量  sem_unlink销毁    退出时自动清理
+ int sem_init(sem_t *sem, int pshared, unsigned int value);
+         <用于线程中>   匿名信号量         sem_destroy销毁   退出时自动清理
+ sem：
+    说明：指向要初始化的信号量对象的指针。
+pshared：
+    说明：指定信号量的共享范围。
+    if pshared == 0，信号量只能在当前进程的线程之间共享。
+    if pshared != 0，信号量可以在多个进程之间共享（需要信号量位于共享内存中）。
+
+value：
+    说明：信号量的初始值。通常用于表示可用资源的数量。
+
+    if value = 1，信号量是二进制信号量（类似于互斥锁）。
+    if value = 0，信号量是计数信号量，但初始值为 0，表示没有可用资源。
+    if value > 1，信号量是计数信号量。(此时value 是v操作的最大值)
+返回值
+    成功时返回 0。
+    失败时返回 -1，并设置 errno 以指示错误原因。
+
+ * sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value); 
+         <用于进程中>   有名（命名）信号量  sem_unlink销毁    退出时自动清理
+参数说明
+sem：
+    说明：指向要初始化的信号量对象的指针。
+pshared：
+    说明：指定信号量的共享范围。
+    if pshared == 0，信号量只能在当前进程的线程之间共享。
+    if pshared != 0，信号量可以在多个进程之间共享（需要信号量位于共享内存中）。
+value：
+    说明：信号量的初始值。通常用于表示可用资源的数量。
+    if value == 0，
+    if value == 1，信号量是二进制信号量（类似于互斥锁）。
+    if value >1 ，信号量是计数信号量。
+
+返回值
+    成功时返回 0。
+    失败时返回 -1，并设置 errno 以指示错误原因。
+错误码
+    EINVAL：value 超出了 SEM_VALUE_MAX 的限制。
+    ENOSYS：系统不支持信号量。
+    EPERM：进程没有足够的权限初始化信号量。      
  */
 
   P 操作（sem_wait） 
