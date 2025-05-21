@@ -56,10 +56,10 @@ int main(int argc, const char **argv) {
       perror("father process write is failed !\n");
     }
     /*这里是等待子进程运行结束，注释掉之后，子进程可能成为孤儿进程，孤儿进程的父进程是init进程**/
-    // pid_t ret_pid = waitpid(pid, &ret_state, 0);
-    // if (ret_pid < 0) {
-    //   perror("waitpid is failed in father process!\n");
-    // }
+    pid_t ret_pid = waitpid(pid, &ret_state, 0);
+    if (ret_pid < 0) {
+    	 perror("waitpid is failed in father process!\n");
+     }
     close(fd);
     exit(0);
   }
