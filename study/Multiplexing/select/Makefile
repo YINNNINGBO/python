@@ -6,10 +6,11 @@ OBJ:=$(MIN:.o=)
 all: $(OBJ) Mkdir
 
 
-$(OBJ):$(MIN)
-	$(CC) -o $@ $< -Wall  
+$(OBJ):%:%.o
+	$(CC) -o $@ $< -Wall
 Mkdir:
-	@mkdir ./MIN
+	@echo "Creating directory for minimized files..."
+	-@mkdir ./MIN
 	@mv $(MIN) MIN/
 .PHONY: all clean
 clean:

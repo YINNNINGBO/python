@@ -80,6 +80,7 @@ int main()
                 else if (len > 0)
                 {
                     // 收到了数据
+                    printf("get client data: %s\n", buf);
                     // 发送数据
                     write(i, buf, strlen(buf) + 1);
                 }

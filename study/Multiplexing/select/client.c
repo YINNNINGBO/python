@@ -35,6 +35,7 @@ int main()
         // sprintf(recvBuf, "data: %d\n", i++);
         fgets(recvBuf, sizeof(recvBuf), stdin);
         write(fd, recvBuf, strlen(recvBuf) + 1);
+        bzero(recvBuf, sizeof(recvBuf));
         // 如果客户端没有发送数据, 默认阻塞
         read(fd, recvBuf, sizeof(recvBuf));
         printf("recv buf: %s\n", recvBuf);
